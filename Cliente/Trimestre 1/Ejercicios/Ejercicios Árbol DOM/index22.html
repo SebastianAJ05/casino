@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 22</title>
+    <style>
+        img {
+            width: 640px;
+            height: 360px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;/* Oculto por defecto */
+            z-index: 10;
+        }
+
+        .overlay img {
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let img = document.querySelector('img');
+            let overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            document.body.appendChild(overlay);
+
+            img.onclick = function () {
+                overlay.appendChild(img); // Mueve la imagen al overlay
+                img.style.width = '1280px';
+                img.style.height = '720px';
+                overlay.style.display = 'flex';
+            }
+
+            overlay.onclick = function () {
+                document.body.appendChild(img); // Mueve la imagen al body
+                img.style.width = '640px';
+                img.style.height = '360px';
+                overlay.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <img src="img/Aurora-boreal.jpg" alt="imagenDeGoogle">
+</body>
+
+</html>

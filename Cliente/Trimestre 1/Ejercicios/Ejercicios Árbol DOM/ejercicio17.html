@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 17</title>
+    <script src="ejercicio17.js"></script>
+    <link rel="stylesheet" href="ejercicio17.css">
+    <style>
+      div {
+        width: 150px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -20px;
+        position: relative;
+      }
+      img {
+        width: 150px;
+        height: auto;
+        left: 0;
+        margin-bottom: 5px;
+      }
+      section {
+        margin-top: 50px;
+      }
+      h3 {
+        margin-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Elige el caballo por el que quieras apostar</h1>
+
+    <div id="Zeus">
+      <h3>Zeus</h3>
+      <img src="img/caballo1.jpg" alt="Caballo 1" />
+      <button>Apostar por Zeus</button>
+    </div>
+    <br />
+    <div id="Centella">
+      <h3>Centella</h3>
+      <img src="img/caballo2.jpg" alt="Caballo 2" />
+      <button>Apostar por Centella</button>
+    </div>
+    <br />
+    <div id="Rapidash">
+      <h3>Rapidash</h3>
+      <img src="img/caballo3.jpg" alt="Caballo 3" />
+      <button>Apostar por Rapidash</button>
+    </div>
+    <br />
+    <div id="Pegasus">
+      <h3>Pegasus</h3>
+      <img src="img/caballo4.webp" alt="Caballo 4" />
+      <button>Apostar por Pegasus</button>
+    </div>
+
+    <br />
+    <section>
+      <output id="apuesta"></output>
+      <button id="run">CORRER</button>
+      <button id="reset">Resetear</button>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.victoria {
+  color: greenyellow;
+}
+
+.derrota {
+  color: red;
+}
+
+.victoria,
+.derrota {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
