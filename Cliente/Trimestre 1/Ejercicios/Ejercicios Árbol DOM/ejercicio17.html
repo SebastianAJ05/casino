@@ -31,7 +31,7 @@
   </head>
   <body>
     <h1>Elige el caballo por el que quieras apostar</h1>
-
+    <p>Tu dinero: <span id="dinero_usuario">100</span></p>
     <div id="Zeus">
       <h3>Zeus</h3>
       <img src="img/caballo1.jpg" alt="Caballo 1" />
@@ -59,6 +59,8 @@
     <br />
     <section>
       <output id="apuesta"></output>
+      <label for="dinero_apostado">¿Cuánto quieres apostar?</label>
+      <input type="number" name="dinero_apostado" id="dinero_apostado" value="0"/>
       <button id="run">CORRER</button>
       <button id="reset">Resetear</button>
     </section>

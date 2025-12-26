@@ -8,8 +8,6 @@ window.onload = function () {
   let posicion;
   let caballo_apuesta;
   let output = document.getElementById("apuesta");
-  let tam_pantalla = screen.availWidth;
-  console.log(tam_pantalla);
 
   for (let div of divs) {
     div.style.left = "0px";
@@ -24,50 +22,76 @@ window.onload = function () {
     };
   }
   correr.onclick = function () {
+    //Dinero de la apuesta
+
+    let dinero_apostado = parseInt(
+      document.getElementById("dinero_apostado").value
+    );
+
+    let dinero_usuario = parseInt(
+      document.getElementById("dinero_usuario").textContent
+    );
     if (!caballo_apuesta || caballo_apuesta == null) {
       alert("No has elegido caballo a apostar");
     } else {
-      for (let div of divs) {
-        const titulo = div.querySelector("h3");
-        const boton = div.querySelector("button");
-
-        if (titulo) titulo.remove();
-        if (boton) boton.remove();
-      }
-
-      timer = setInterval(function () {
+      if (
+        dinero_apostado >= dinero_usuario ||
+        isNaN(dinero_apostado) ||
+        dinero_apostado <= 0
+      ) {
+        alert(
+          "No puedes apostar más dinero del que tienes o apostar una cantidad inválida"
+        );
+        console.log("Dinero apostado: " + dinero_apostado);
+        return false;
+      } else {
         for (let div of divs) {
-          let avance = parseInt(Math.random() * 50 - 10 + 1) + 10;
-          posicion = parseInt(
-            div.style.left.substring(0, div.style.left.indexOf("p"))
-          );
+          const titulo = div.querySelector("h3");
+          const boton = div.querySelector("button");
 
-          //console.log("Posicion: " + posicion);
-          div.style.left = parseInt(posicion + avance) + "px";
-          //console.log("Nueva posicion: " + div.style.left);
-          if (posicion >= screen.availWidth - div.clientWidth) {
-            clearInterval(timer);
-            alert("Carrera terminada");
+          if (titulo) titulo.remove();
+          if (boton) boton.remove();
+        }
 
-            //Mete aquí la comparación de la apuesta
+        timer = setInterval(function () {
+          for (let div of divs) {
+            let avance = parseInt(Math.random() * 50 - 10 + 1) + 10;
+            posicion = parseInt(
+              div.style.left.substring(0, div.style.left.indexOf("p"))
+            );
 
-            if (div.id == caballo_apuesta) {
-              output.classList.add("victoria");
-              output.innerText =
-                "Tu caballo " + caballo_apuesta+" ha ganado\n";
-              //Suma el dinero cuando tengas lo del dinero hecho
-            } else {
-              output.classList.add("derrota");
-              output.innerText =
-                "Tu caballo: " +
-                caballo_apuesta +
-                " ha perdido. Ha ganado " +
-                div.id+"\n";
-              // Y aquí restalo
+            //console.log("Posicion: " + posicion);
+            div.style.left = parseInt(posicion + avance) + "px";
+            //console.log("Nueva posicion: " + div.style.left);
+            if (posicion >= screen.availWidth - div.clientWidth) {
+              clearInterval(timer);
+              alert("Carrera terminada");
+
+              //Mete aquí la comparación de la apuesta
+
+              if (div.id == caballo_apuesta) {
+                output.classList.add("victoria");
+                output.innerText =
+                  "Tu caballo " + caballo_apuesta + " ha ganado\n";
+                //Suma el dinero cuando tengas lo del dinero hecho
+                document.getElementById("dinero_usuario").textContent =
+                  dinero_usuario + dinero_apostado;
+              } else {
+                output.classList.add("derrota");
+                output.innerText =
+                  "Tu caballo: " +
+                  caballo_apuesta +
+                  " ha perdido. Ha ganado " +
+                  div.id +
+                  "\n";
+                // Y aquí restalo
+                document.getElementById("dinero_usuario").textContent =
+                  dinero_usuario - dinero_apostado;
+              }
             }
           }
-        }
-      }, 500);
+        }, 500);
+      }
     }
   };
 
