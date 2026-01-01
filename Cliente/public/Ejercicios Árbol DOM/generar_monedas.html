@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 18</title>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coin Generator</title>
+    <link rel="stylesheet" href="generar_monedas.css" />
+  </head>
+  <body>
+    <main class="coin-machine">
+      <h1 class="title">Máquina de Fichas</h1>
+      <p class="subtitle">El tiempo también paga.</p>
+
+      <div class="coin-display">
+        <span class="coin-icon">🪙</span>
+        <span id="dinero_usuario" class="coin-count">0</span>
+      </div>
+
+      <div class="progress-container">
+        <progress class="progress-bar" min="0" max="100" value="0"></progress>
+      </div>
+
+      <!-- BOTÓN (si es botón) -->
+      <button id="generar" class="generate-btn">Generar moneda</button>
+
+      <!-- OPCIÓN IMAGEN (por si luego cambias) -->
+      <!--
+    <img
+      src="img/coin.png"
+      id="generar"
+      class="coin-image"
+      alt="Generar moneda"
+    />
+    --></main>
     <script src="generar_monedas.js"></script>
-</head>
-<body>
-    <div id="monedas">0</div>
-    <progress min="0" max="100" value="0">
-    </progress>
-    <button id="generar">Generar moneda</button>
-</body>
+  </body>
 </html>
