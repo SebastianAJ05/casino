@@ -1,4 +1,7 @@
 window.onload = function () {
+  let contador = 0;
+  let movimientos = document.getElementById("movimientos");
+
   let filas = document.getElementsByTagName("tr");
   let celdas = document.getElementsByTagName("td");
 
@@ -14,37 +17,43 @@ window.onload = function () {
   celdas[celda_pintada].style.backgroundColor = "aqua";
 
   arriba.onclick = function () {
-    if (celda_pintada >= 0 && celda_pintada <= (celdas.length / filas.length)-1) {
-    } else {
-      celdas[celda_pintada].style.backgroundColor = "white";
+    if (celda_pintada < 0 || celda_pintada > celdas.length / filas.length - 1) {
+      celdas[celda_pintada].style.backgroundColor = "";
       celda_pintada -= celdas.length / filas.length;
       celdas[celda_pintada].style.backgroundColor = "aqua";
+
+      contador++;
+      movimientos.textContent = "Movimientos: " + contador;
     }
   };
   derecha.onclick = function () {
-    if ((celda_pintada+1) % 5 == 0 && celda_pintada != 0) {
-    } else {
-      celdas[celda_pintada].style.backgroundColor = "white";
+    if ((celda_pintada + 1) % 5 != 0 || celda_pintada == 0) {
+      celdas[celda_pintada].style.backgroundColor = "";
       celda_pintada++;
       celdas[celda_pintada].style.backgroundColor = "aqua";
+
+      contador++;
+      movimientos.textContent = "Movimientos: " + contador;
     }
   };
   abajo.onclick = function () {
-    if ((celda_pintada >= (celdas.length - filas.length)) && (celda_pintada < celdas.length)) {
-        
-    }else{
-        celdas[celda_pintada].style.backgroundColor = "white";
-        celda_pintada += celdas.length / filas.length;
-        celdas[celda_pintada].style.backgroundColor = "aqua";
+    if (celda_pintada < celdas.length - filas.length || celda_pintada >= celdas.length) {
+      celdas[celda_pintada].style.backgroundColor = "";
+      celda_pintada += celdas.length / filas.length;
+      celdas[celda_pintada].style.backgroundColor = "aqua";
+
+      contador++;
+      movimientos.textContent = "Movimientos: " + contador;
     }
-    
   };
   izquierda.onclick = function () {
-    if (celda_pintada != celdas.length - 1 && celda_pintada % 5 == 0) {
-    } else {
-      celdas[celda_pintada].style.backgroundColor = "white";
+    if (celda_pintada == celdas.length - 1 || celda_pintada % 5 != 0) {
+      celdas[celda_pintada].style.backgroundColor = "";
       celda_pintada--;
       celdas[celda_pintada].style.backgroundColor = "aqua";
+
+      contador++;
+      movimientos.textContent = "Movimientos: " + contador;
     }
   };
 };
