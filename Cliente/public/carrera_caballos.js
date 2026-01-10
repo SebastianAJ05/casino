@@ -1,4 +1,7 @@
 let timer;
+
+//Pon con localStorage las veces que el usuario ha ganado la apuesta y las que ha perdido
+
 window.onload = function () {
   let divs = document.querySelectorAll("div");
   console.log(divs);

@@ -10,7 +10,7 @@ body {
   color: #f5f5f5;
 }
 
-/* HEADER */
+/* HEADER
 header {
   text-align: center;
   padding: 60px 20px;
@@ -27,7 +27,7 @@ header h1 {
   font-style: italic;
   color: #ccc;
   letter-spacing: 1px;
-}
+} */
 
 /* MAIN */
 main {
@@ -133,4 +133,100 @@ footer .warning {
   margin-top: 8px;
   font-style: italic;
   color: #777;
+}
+
+/* HEADER GENERAL */
+.casino-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 30px;
+  background: linear-gradient(145deg, #0e0e0e, #1a1a1a);
+  border-bottom: 2px solid #f5c542;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* LOGO */
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #f5c542;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #ff9100;
+  cursor: default;
+}
+
+/* NAVEGACIÓN */
+.header-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.header-nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: #f5c542;
+}
+
+/* SUBRAYADO FINO AL HOVER */
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #f5c542;
+  transition: width 0.2s ease;
+}
+
+.header-nav a:hover::after {
+  width: 100%;
+}
+
+/* ZONA DERECHA */
+.header-right {
+  display: flex;
+  gap: 15px;
+}
+
+/* LOGIN */
+.login {
+  padding: 8px 14px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.login:hover {
+  color: #fff;
+}
+
+/* REGISTRO */
+.register {
+  padding: 8px 14px;
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.register:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff9100;
 }
