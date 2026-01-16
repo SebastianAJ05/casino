@@ -128,3 +128,31 @@
     padding: 15px 10px;
   }
 }
+
+/* BOTÓN VOLVER – GLOBAL CASINO */
+.casino-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+
+  transition: all 0.2s ease;
+}

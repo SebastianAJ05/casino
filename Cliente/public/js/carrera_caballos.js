@@ -24,8 +24,15 @@ window.onload = function () {
       console.log(apuesta.parentNode.children);
     };
   }
+
+  let resetear = document.querySelector("#reset");
+  resetear.onclick = function () {
+    clearInterval(timer);
+    location.reload();
+  };
   correr.onclick = function () {
     //Dinero de la apuesta
+    let campo_apuesta = document.getElementById("dinero_apostado");
 
     let dinero_apostado = parseInt(
       document.getElementById("dinero_apostado").value
@@ -55,6 +62,10 @@ window.onload = function () {
           if (titulo) titulo.remove();
           if (boton) boton.remove();
         }
+
+        resetear.disabled = true;
+        correr.disabled = true;
+        campo_apuesta.disabled = true;
 
         timer = setInterval(function () {
           for (let div of divs) {
@@ -91,16 +102,13 @@ window.onload = function () {
                 document.getElementById("dinero_usuario").textContent =
                   dinero_usuario - dinero_apostado;
               }
+              resetear.disabled = false;
+              campo_apuesta.disabled = false;
+              correr.disabled = false;
             }
           }
         }, 500);
       }
     }
-  };
-
-  let resetear = document.querySelector("#reset");
-  resetear.onclick = function () {
-    clearInterval(timer);
-    location.reload();
   };
 };
