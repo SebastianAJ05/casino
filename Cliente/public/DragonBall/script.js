@@ -1,4 +1,5 @@
 window.onload = function () {
+  let campo_dinero = document.getElementById("dinero_usuario");
   let info = document.querySelector("#botones");
 
   const url = "https://dragonball-api.com/api/characters?limit=58";
@@ -78,11 +79,15 @@ window.onload = function () {
             boton.classList.add("correct");
 
             //Suma monedas
-            location.reload();
+            campo_dinero.textContent = parseInt(campo_dinero.textContent) + 1;
+            campo_dinero.classList.toggle("up");
+            // location.reload();
           } else {
             alert("Has fallado");
             //Resta monedas
-            location.reload();
+            campo_dinero.textContent = parseInt(campo_dinero.textContent) - 1;
+            campo_dinero.classList.toggle("down");
+            // location.reload();
           }
         });
 
