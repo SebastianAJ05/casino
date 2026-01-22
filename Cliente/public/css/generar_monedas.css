@@ -94,6 +94,8 @@ body {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .generate-btn:hover {
@@ -113,7 +115,9 @@ body {
   width: 120px;
   cursor: pointer;
   filter: drop-shadow(0 0 10px #00ff9c);
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 .coin-image:hover {
@@ -196,3 +200,53 @@ body {
   }
 }
 
+/* DISABLED */
+.generate-btn:disabled {
+  background: linear-gradient(145deg, #2a2a2a, #111);
+  color: #aaa;
+
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.8;
+
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 255, 200, 0.2);
+  color: transparent; /* 🔑 Oculta el texto original */
+  text-shadow: none;
+}
+
+/* EFECTO "RECARGANDO" */
+.generate-btn:disabled::after {
+  content: "Recargando...";
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  color: #00fff0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 255, 240, 0.15),
+    rgba(0, 255, 240, 0.05),
+    rgba(0, 255, 240, 0.15)
+  );
+
+  animation: loadingGlow 1.2s infinite linear;
+}
+
+/* ANIMACIÓN SUAVE */
+@keyframes loadingGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}

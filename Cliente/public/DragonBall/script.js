@@ -81,14 +81,13 @@ window.onload = function () {
             //Suma monedas
             campo_dinero.textContent = parseInt(campo_dinero.textContent) + 1;
             campo_dinero.classList.toggle("up");
-            // location.reload();
           } else {
             alert("Has fallado");
             //Resta monedas
             campo_dinero.textContent = parseInt(campo_dinero.textContent) - 1;
             campo_dinero.classList.toggle("down");
-            // location.reload();
           }
+          location.reload();
         });
 
         info.appendChild(boton);

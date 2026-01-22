@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+}
+
+/* CONTENEDOR */
+.auth-container {
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+
+  background: linear-gradient(145deg, #0f0f0f, #1c1c1c);
+  border: 2px solid #f5c542;
+  border-radius: 16px;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+/* TÍTULO */
+.auth-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #f5c542;
+  text-shadow: 0 0 10px rgba(255, 145, 0, 0.6);
+}
+
+/* FORM */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+input:focus {
+  outline: 2px solid #f5c542;
+}
+
+/* BOTÓN */
+button {
+  margin-top: 10px;
+  padding: 12px;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  border: none;
+  border-radius: 10px;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff9100;
+}
+
+/* TEXTO ABAJO */
+.auth-extra {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.auth-extra a {
+  color: #f5c542;
+  text-decoration: none;
+}
+
+/* BOTÓN VOLVER – GLOBAL CASINO */
+.casino-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+.casino-back:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 0 15px rgba(255, 145, 0, 0.9),
+    0 6px 15px rgba(0, 0, 0, 0.9);
+}
+
+/* CLICK */
+.casino-back:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .casino-back {
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
