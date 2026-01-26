@@ -68,3 +68,40 @@ button:hover {
     padding: 8px 12px;
   }
 }
+
+/* INPUT FILE */
+.file-input {
+  padding: 8px;
+  background: #111;
+  color: #ccc;
+  border-radius: 8px;
+  border: 2px dashed #555;
+  cursor: pointer;
+}
+
+/* BOTÓN NATIVO DEL FILE */
+.file-input::file-selector-button {
+  margin-right: 10px;
+  padding: 8px 12px;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+.file-input::file-selector-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 145, 0, 0.8);
+}
+
+/* HOVER GENERAL */
+.file-input:hover {
+  border-color: #f5c542;
+}

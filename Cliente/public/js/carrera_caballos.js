@@ -45,7 +45,7 @@ window.onload = function () {
       alert("No has elegido caballo a apostar");
     } else {
       if (
-        dinero_apostado >= dinero_usuario ||
+        dinero_apostado > dinero_usuario ||
         isNaN(dinero_apostado) ||
         dinero_apostado <= 0
       ) {
