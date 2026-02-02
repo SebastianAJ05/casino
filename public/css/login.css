@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
@@ -140,4 +140,21 @@ button:hover {
     font-size: 0.8rem;
     padding: 8px 12px;
   }
+}
+
+.admin-link {
+  margin-top: 15px;
+  display: block;
+  text-align: center;
+
+  font-size: 0.8rem;
+  color: #999;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.admin-link:hover {
+  color: #ff4444;
+  text-shadow: 0 0 6px rgba(255, 68, 68, 0.7);
 }
