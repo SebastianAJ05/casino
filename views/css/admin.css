@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0b0b0b;
+  color: #eee;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 30px;
+  background: linear-gradient(145deg, #111, #1c1c1c);
+  border-bottom: 2px solid #ff4444;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #ff4444;
+}
+
+.exit-admin {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.exit-admin:hover {
+  color: #fff;
+}
+
+/* DASHBOARD */
+.admin-dashboard {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* TARJETAS */
+.admin-card {
+  background: #111;
+  border-left: 4px solid #ff4444;
+  padding: 20px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+}
+
+.admin-card h3 {
+  margin-top: 0;
+  color: #ff6666;
+}
+
+.admin-card p {
+  font-size: 0.9rem;
+  color: #bbb;
+}

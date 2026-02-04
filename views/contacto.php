@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto | Casino</title>
+  <link rel="stylesheet" href="./css/contacto.css">
+</head>
+<body>
+
+<a href="index.html" class="casino-back">⬅ Volver al Casino</a>
+
+<main class="page-container">
+  <h1>Contacto</h1>
+  <p class="subtitle">¿Tienes dudas, sugerencias o problemas? Escríbenos.</p>
+
+  <form class="contact-form" method="POST">
+    <label>Nombre</label>
+    <input type="text" name="nombre" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+     <label>Teléfono</label>
+    <input type="tel" name="telefono" required>
+
+    <label>Mensaje</label>
+    <textarea rows="5" name="mensaje" required></textarea>
+
+    <button type="submit">Enviar mensaje</button>
+  </form>
+</main>
+</body>
+</html>
