@@ -1,27 +1,36 @@
-
 <?php
 
 // 1- Selecciono el controlador:
- // Lee ?c= de la URL.
-  // Si no existe, usa Usuario por defecto.
-$c = $_GET['c'] ?? 'Contacto';
+// Lee ?c= de la URL.
+// Si no existe, usa Usuario por defecto.
+$controller = $_GET['controller'] ?? '';
 // 2- Selecciono la acción:
- // Lee ?a= de la URL.
-  // Si no existe, llama a index().
-$a = $_GET['a'] ?? 'crear';
+// Lee ?a= de la URL.
+// Si no existe, llama a index().
+$accion = $_GET['accion'] ?? 'index';
 
+$carpeta = $_GET['carpeta'] ?? ''; //Aquí añadiré si el controller esta en una carpeta mas profunda
+
+if ($controller == '') {
+    header('location: index.html');
+}
+if ($carpeta == "") {
+    require_once 'controllers/' . $controller . 'Controller.php';
+} else {
+    require_once 'controllers/' . $carpeta . "/" . $controller . 'Controller.php';
+}
 // 3- Carga el controlador:
 // Incluye el archivo del controlador elegido.
-require_once 'controllers/' . $c . 'Controller.php';
+
 
 // 4- Crea la instancia:
- // Construye el nombre de la clase dinámicamente.
-  // Crea el objeto controlador.
-$controllerName = $c . 'Controller';
+// Construye el nombre de la clase dinámicamente.
+// Crea el objeto controlador.
+$controllerName = $controller . 'Controller';
 $controller = new $controllerName();
 // 5- Ejecuta la acción:
- // Llama al método indicado (index, crear, editar, etc.).
-$controller->$a();
+// Llama al método indicado (index, crear, editar, etc.).
+$controller->$accion();
 
 /*
 Ejemplo real:
@@ -40,5 +49,3 @@ EXPLICACIÓN FINAL:
         Vista → controlador → modelo → controlador → vista
 
 */
-
-

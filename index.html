@@ -16,11 +16,10 @@
     <!-- Descripción de mi página -->
     <title>El Casino de la noche</title>
     <!-- Título de mi página -->
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="./views/css/index.css" />
+    <link rel="stylesheet" href="./views/css/responsive.css" />
   </head>
   <body>
-
     <header class="casino-header">
       <div class="header-left">
         <span class="logo">🎰 El Casino de la noche</span>
@@ -28,14 +27,18 @@
 
       <nav class="header-nav">
         <a href="./index.html">Inicio</a>
-        <a href="./faqs.html">FAQs</a>
-        <a href="./contacto.html">Contacto</a>
-        <a href="./sobre_nosotros.html">Sobre nosotros</a>
+        <a href="./views/faqs.html">FAQs</a>
+        <a href="./index.php?accion=crear&controller=Contacto">Contacto</a>
+        <a href="./views/sobre_nosotros.html">Sobre nosotros</a>
       </nav>
 
       <div class="header-right">
-        <a href="login.html" class="login">Iniciar sesión</a>
-        <a href="registro.html" class="register">Registro</a>
+        <a href="index.php?accion=login&controller=Usuario&carpeta=public" class="login">Iniciar sesión</a>
+        <a
+          href="index.php?accion=crear&controller=Usuario&carpeta=public"
+          class="register"
+          >Registro</a
+        >
       </div>
     </header>
 
@@ -66,7 +69,7 @@
         <article class="game-card">
           <h3>El juego de la tabla</h3>
           <p>Aquí no pierdes ni ganas dinero. Solo diviértete 😉😜</p>
-          <a href="tabla.html">Entrar</a>
+          <a href="./views/public/tabla.html">Entrar</a>
         </article>
 
         <article class="game-card">

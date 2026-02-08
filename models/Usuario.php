@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 require_once './config/conexion.php';
 
 class Usuario
@@ -13,13 +15,19 @@ class Usuario
     {
         return $this->db->query("SELECT * FROM usuarios")->fetchAll();
     }
-    public function getById($id)
+    public function getByEmail($email)
     {
-        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE id=?");
-        $stmt->execute([$id]);
-        return $stmt->fetch();
+        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE email=?");
+        $stmt->execute([$email]);
+        $usuario_buscar = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (filter_var($usuario_buscar, FILTER_VALIDATE_BOOLEAN) === false && $usuario_buscar === false) {
+            return false;
+        }
+        else if (count($usuario_buscar) > 0) {
+            return $usuario_buscar;
+        }
     }
-    public function save($username, $email,$contrasenia, $ruta_imagen)
+    public function save($username, $email, $contrasenia, $ruta_imagen)
     {
         $stmt = $this->db->prepare("INSERT INTO usuarios (username, email, contrasenia, ruta_imagen) VALUES(?,?,?,?)");
         $stmt->execute([$username, $email, $contrasenia, $ruta_imagen]);

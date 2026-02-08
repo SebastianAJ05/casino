@@ -24,7 +24,7 @@ class ContactoController
 
             
         }
-        require './views/contacto.php';
+        require './views/contacto.html';
     }
     public function editar()
     {

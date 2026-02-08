@@ -1,0 +1,31 @@
+@import url("index.css");
+@import url("retroceso.css");
+
+.page-container {
+  max-width: 650px;
+  margin: 120px auto;
+  padding: 35px;
+
+  background: linear-gradient(145deg, #0e0e0e, #1a1a1a);
+  border-radius: 20px;
+  color: #ddd;
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+h1 {
+  text-align: center;
+  color: #f5c542;
+  margin-bottom: 25px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #00fff0;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+}

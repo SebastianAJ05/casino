@@ -1,14 +1,29 @@
 <?php
 
-require_once '../../models/Usuario.php';
+require_once './models/Usuario.php';
 
 class UsuarioController
 {
-    public function index()
+    public function login()
     {
-        $u = new Usuario();
-        $usuarios = $u->getAll();
-        require '../views/admin/listar.php';
+        if ($_POST) {
+            $u = new Usuario();
+            $usuarios = $u->getByEmail($_POST['email']);
+            if ($usuarios) {
+                if (password_verify($_POST['contrasenia'], $usuarios['contrasenia'])) {
+                    // session_start();
+                    // $_SESSION['usuario'] = $usuarios;
+                    // header("Location: index.php");
+                    echo "Login exitoso";
+                } else {
+                    echo "Contraseña incorrecta";
+                }
+            } else {
+                echo "Usuario no encontrado";
+            }
+        }
+
+        require './views/public/login.html';
     }
     public function crear()
     {
@@ -30,12 +45,13 @@ class UsuarioController
             $nombreArchivo = basename($_FILES["imagen"]["name"]);
             // // Luego tú usas esa variable para construir la ruta final:
             $rutaCompleta = $directorio . $nombreArchivo;
+            $contrasenia_cifrada = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
 
             move_uploaded_file($_FILES["imagen"]["tmp_name"],  $rutaCompleta);
-            (new Usuario())->save($_POST['nombre'], $_POST['email'], $_POST["contrasenia"], $rutaCompleta);
+            (new Usuario())->save($_POST['username'], $_POST['email'], $contrasenia_cifrada, $rutaCompleta);
             header("Location: index.php");
         }
-        require 'views/crear.php';
+        require './views/public/registro.html';
     }
     public function editar()
     {
