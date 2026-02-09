@@ -1,14 +1,14 @@
 <?php
 
-require_once '../../models/Usuario.php';
+require_once './models/Usuario.php';
 
 class UsuarioController
 {
-    public function index()
+    public function login()
     {
         $u = new Usuario();
         $usuarios = $u->getAll();
-        require '../views/admin/listar.php';
+        require './views/admin/login.php';
     }
     public function crear()
     {

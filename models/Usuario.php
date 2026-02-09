@@ -13,7 +13,7 @@ class Usuario
     }
     public function getAll()
     {
-        return $this->db->query("SELECT * FROM usuarios")->fetchAll();
+        return $this->db->query("SELECT username, email, dinero, ruta_imagen FROM usuarios WHERE isAdmin = 0")->fetchAll();
     }
     public function getByEmail($email)
     {

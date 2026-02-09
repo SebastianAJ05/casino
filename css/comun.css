@@ -48,3 +48,52 @@
     padding: 8px 12px;
   }
 }
+
+/* MENSAJE GENERAL */
+.form-message {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 14px;
+
+  font-size: 0.85rem;
+  text-align: center;
+
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(-5px);
+
+  animation: messageIn 0.3s ease forwards;
+}
+
+/* ERROR */
+.form-message.error {
+  background: rgba(255, 68, 68, 0.15);
+  border: 1px solid #ff4444;
+  color: #ff6666;
+
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+/* ÉXITO */
+.form-message.success {
+  background: rgba(0, 255, 150, 0.15);
+  border: 1px solid #00ff99;
+  color: #00ff99;
+
+  box-shadow: 0 0 10px rgba(0, 255, 150, 0.3);
+}
+
+/* INFO (OPCIONAL) */
+.form-message.info {
+  background: rgba(0, 200, 255, 0.15);
+  border: 1px solid #00c8ff;
+  color: #00c8ff;
+}
+
+@keyframes messageIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

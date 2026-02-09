@@ -8,22 +8,22 @@ class UsuarioController
     {
         if ($_POST) {
             $u = new Usuario();
-            $usuarios = $u->getByEmail($_POST['email']);
-            if ($usuarios) {
-                if (password_verify($_POST['contrasenia'], $usuarios['contrasenia'])) {
-                    // session_start();
-                    // $_SESSION['usuario'] = $usuarios;
-                    // header("Location: index.php");
-                    echo "Login exitoso";
+            $usuario_buscar = $u->getByEmail($_POST['email']);
+            if ($usuario_buscar) {
+                if (password_verify($_POST['contrasenia'], $usuario_buscar['contrasenia'])) {
+                    session_start();
+                    $_SESSION['id_usuario'] = $usuario_buscar['id'];
+                    $salida = "Login exitoso";
+                    header("Location: index.php");
                 } else {
-                    echo "Contraseña incorrecta";
+                    $salida = "Contraseña incorrecta";
                 }
             } else {
-                echo "Usuario no encontrado";
+                $salida = "Usuario no encontrado";
             }
         }
 
-        require './views/public/login.html';
+        require './views/public/login.php';
     }
     public function crear()
     {
@@ -51,7 +51,7 @@ class UsuarioController
             (new Usuario())->save($_POST['username'], $_POST['email'], $contrasenia_cifrada, $rutaCompleta);
             header("Location: index.php");
         }
-        require './views/public/registro.html';
+        require './views/public/registro.php';
     }
     public function editar()
     {
