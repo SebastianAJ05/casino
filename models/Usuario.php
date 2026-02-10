@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 require_once './config/conexion.php';
 
 class Usuario
@@ -22,8 +20,7 @@ class Usuario
         $usuario_buscar = $stmt->fetch(PDO::FETCH_ASSOC);
         if (filter_var($usuario_buscar, FILTER_VALIDATE_BOOLEAN) === false && $usuario_buscar === false) {
             return false;
-        }
-        else if (count($usuario_buscar) > 0) {
+        } else if (count($usuario_buscar) > 0) {
             return $usuario_buscar;
         }
     }
@@ -34,12 +31,18 @@ class Usuario
     }
     public function update($id, $username, $email, $ruta_imagen)
     {
-        $stmt = $this->db->prepare("UPDATE usuarios SET username=?,email=?,ruta_imagen=? WHERE id=?");
+        $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,ruta_imagen = ? WHERE id = ?");
         $stmt->execute([$username, $email, $ruta_imagen, $id]);
     }
     public function delete($id)
     {
         $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id=?");
         $stmt->execute([$id]);
+    }
+
+    public function getAdmin($email){
+        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE email = ? AND isAdmin = 1");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

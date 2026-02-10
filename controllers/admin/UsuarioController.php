@@ -6,8 +6,23 @@ class UsuarioController
 {
     public function login()
     {
-        $u = new Usuario();
-        $usuarios = $u->getAll();
+        if ($_POST) {
+            $u = new Usuario();
+            $admin_buscar = $u->getAdmin($_POST["email"]);
+            if ($admin_buscar) {
+                if (password_verify($_POST["contrasenia"], $admin_buscar["contrasenia"])) {
+                    // session_start();
+                    $_SESSION['id_usuario'] = $admin_buscar['id'];
+                    // header("Location: index.php");
+                    $salida = "Login exitoso";
+                } else {
+                    $salida = "Contraseña incorrecta";
+                }
+            } else {
+                $salida = "Usuario no encontrado o no es administrador";
+            }
+        }
+
         require './views/admin/login.php';
     }
     public function crear()
