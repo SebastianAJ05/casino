@@ -1,38 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Panel de Administración</title>
-  <link rel="stylesheet" href="admin.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="../../css/admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1>Panel de Administración</h1>
+      <a href="../../index.html" class="exit-admin">Salir</a>
+    </header>
 
-<header class="admin-header">
-  <h1>Panel de Administración</h1>
-  <a href="../index.html" class="exit-admin">Salir</a>
-</header>
+    <main class="admin-dashboard">
+      <section class="admin-card">
+        <h3>Usuarios</h3>
+        <a href="../../index.php?controller=Usuario&action=index&carpeta=admin" class="admin-btn"> Gestionar usuarios </a>
+      </section>
 
-<main class="admin-dashboard">
-  <section class="admin-card">
-    <h3>Usuarios</h3>
-    <p>Gestionar usuarios registrados</p>
-  </section>
+      <section class="admin-card">
+        <h3>Frases</h3>
+        <a href="frases.html" class="admin-btn"> Modificar frases del casino </a>
+      </section>
 
-  <section class="admin-card">
-    <h3>Fichas</h3>
-    <p>Modificar saldo de usuarios</p>
-  </section>
-
-  <section class="admin-card">
-    <h3>Juegos</h3>
-    <p>Activar / desactivar minijuegos</p>
-  </section>
-
-  <section class="admin-card">
-    <h3>Estadísticas</h3>
-    <p>Ver uso y actividad</p>
-  </section>
-</main>
-
-</body>
+      <section class="admin-card">
+        <h3>Caballos</h3>
+        <a href="caballos.html" class="admin-btn">Administrar caballos</a>
+      </section>
+    </main>
+  </body>
 </html>

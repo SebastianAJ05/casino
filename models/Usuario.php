@@ -11,7 +11,7 @@ class Usuario
     }
     public function getAll()
     {
-        return $this->db->query("SELECT username, email, dinero, ruta_imagen FROM usuarios WHERE isAdmin = 0")->fetchAll();
+        return $this->db->query("SELECT id, username, email, dinero, ruta_imagen FROM usuarios WHERE isAdmin = 0")->fetchAll();
     }
     public function getByEmail($email)
     {
@@ -31,18 +31,32 @@ class Usuario
     }
     public function update($id, $username, $email, $ruta_imagen)
     {
-        $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,ruta_imagen = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,ruta_imagen = ? WHERE id = ? AND isAdmin = 0");
         $stmt->execute([$username, $email, $ruta_imagen, $id]);
     }
     public function delete($id)
     {
-        $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id=?");
+        $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id= ? AND isAdmin = 0");
         $stmt->execute([$id]);
     }
 
-    public function getAdmin($email){
+    public function getAdmin($email)
+    {
         $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE email = ? AND isAdmin = 1");
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+     public function getById($id)
+    {
+        $stmt = $this->db->prepare("SELECT id, username, email, dinero, ruta_imagen FROM usuarios WHERE id = ? AND isAdmin = 0");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function updateByAdmin($id, $username, $email, $dinero, $ruta_imagen)
+    {
+        $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,dinero = ?,ruta_imagen = ? WHERE id = ? AND isAdmin = 0");
+        $stmt->execute([$username, $email, $dinero, $ruta_imagen, $id]);
     }
 }

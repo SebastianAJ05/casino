@@ -13,7 +13,7 @@ class UsuarioController
                 if (password_verify($_POST["contrasenia"], $admin_buscar["contrasenia"])) {
                     // session_start();
                     $_SESSION['id_usuario'] = $admin_buscar['id'];
-                    // header("Location: index.php");
+                    header("Location: views/admin/index.php");
                     $salida = "Login exitoso";
                 } else {
                     $salida = "Contraseña incorrecta";
@@ -25,32 +25,11 @@ class UsuarioController
 
         require './views/admin/login.php';
     }
-    public function crear()
+
+    public function index()
     {
-        /*  La PRIMERA VEZ :
-                NO hay POST -> $_POST está vacío -> El if($_POST) NO entra -> Ejecuta el require
-            La SEGUNDA VEZ:
-                Ahora SÍ hay POST -> $_POST contiene nombre y email -> El if($_POST) SÍ entra ;
-                    Guarda en BD y Redirige al listado
-        */
-        if ($_POST) {
-            $directorio = "./img/";
-
-            // Si no existe la carpeta, la creamos
-            if (!file_exists($directorio)) {
-                mkdir($directorio, 0777, true);
-            }
-
-            // // Nombre del archivo subido
-            $nombreArchivo = basename($_FILES["imagen"]["name"]);
-            // // Luego tú usas esa variable para construir la ruta final:
-            $rutaCompleta = $directorio . $nombreArchivo;
-
-            move_uploaded_file($_FILES["imagen"]["tmp_name"],  $rutaCompleta);
-            (new Usuario())->save($_POST['nombre'], $_POST['email'], $_POST["contrasenia"], $rutaCompleta);
-            header("Location: index.php");
-        }
-        require 'views/crear.php';
+        $usuarios = (new Usuario())->getAll();
+        require './views/admin/usuarios/listar.php';
     }
     public function editar()
     {
@@ -64,24 +43,30 @@ class UsuarioController
             if (!file_exists($directorio)) {
                 mkdir($directorio, 0777, true);
             }
+            if (!empty($_FILES['ruta_imagen']['name'])) {
 
-            // // Nombre del archivo subido
-            $nombreArchivo = basename($_FILES["imagen"]["name"]);
-            // Luego tú usas esa variable para construir la ruta final:
-            $rutaCompleta = $directorio . $nombreArchivo;
+                // Se ha subido nueva imagen
+                // Nombre del archivo subido
+                $nombreArchivo = basename($_FILES["ruta_imagen"]["name"]);
+                $rutaTemporal = $_FILES['ruta_imagen']['tmp_name'];
+                // Luego tú usas esa variable para construir la ruta final:
+                $rutaCompleta = $directorio . $nombreArchivo;
+                move_uploaded_file($rutaTemporal, $rutaCompleta);
+            } else {
 
-            move_uploaded_file($_FILES["imagen"]["tmp_name"],  $rutaCompleta);
-            // En DOS pasos como método anterior de crear()
+                // No se ha subido imagen → mantener la anterior
+                $rutaCompleta = $_POST['imagen_actual'];
+            }
 
-            $u->update($_GET['id'], $_POST['username'], $_POST['email'], $rutaCompleta);
-            header("Location: index.php");
+            $u->updateByAdmin($_GET['id'], $_POST['username'], $_POST['email'], $_POST['dinero'], $rutaCompleta);
+            header("Location: index.php?carpeta=admin&accion=index&controller=Usuario");
         }
-        $data = $u->getById($_GET['id']);
-        require 'views/editar.php';
+        $usuario = $u->getById($_GET['id']);
+        require './views/admin/usuarios/editar.php';
     }
     public function eliminar()
     {
         (new Usuario())->delete($_GET['id']);
-        header("Location: index.php");
+        header("Location: index.php?carpeta=admin&accion=index");
     }
 }
