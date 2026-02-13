@@ -11,6 +11,9 @@
 <body>
     <h2 class="admin-section-title">Usuarios registrados</h2>
 
+    <a href="./views/admin/index.html" class="btn-volver-admin">
+        ← Volver al panel
+    </a>
 
     <div class="admin-table-wrapper">
         <table class="admin-table">
@@ -41,11 +44,11 @@
                         </td>
 
                         <td class="acciones">
-                            <a href="index.php?controller=Usuario&carpeta=admin&accion=editar&id=<?php echo urlencode($usuario['id']);?>" class="btn-edit">
+                            <a href="index.php?controller=Usuario&carpeta=admin&accion=editar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-edit">
                                 Editar
                             </a>
 
-                            <a href="index.php?controller=Usuario&carpeta=admin&accion=eliminar&id=<?php echo urlencode($usuario['id']);?>" class="btn-delete">
+                            <a href="index.php?controller=Usuario&carpeta=admin&accion=eliminar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-delete">
                                 Borrar
                             </a>
                         </td>

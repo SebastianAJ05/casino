@@ -1,6 +1,7 @@
 <?php
 
 require_once './models/Usuario.php';
+require_once './config/funciones.php';
 
 class UsuarioController
 {
@@ -13,7 +14,7 @@ class UsuarioController
                 if (password_verify($_POST["contrasenia"], $admin_buscar["contrasenia"])) {
                     // session_start();
                     $_SESSION['id_usuario'] = $admin_buscar['id'];
-                    header("Location: views/admin/index.php");
+                    header("Location: views/admin/index.html");
                     $salida = "Login exitoso";
                 } else {
                     $salida = "Contraseña incorrecta";
@@ -37,26 +38,7 @@ class UsuarioController
         $u = new Usuario();
         if ($_POST) {
 
-            $directorio = "./img/";
-
-            // Si no existe la carpeta, la creamos
-            if (!file_exists($directorio)) {
-                mkdir($directorio, 0777, true);
-            }
-            if (!empty($_FILES['ruta_imagen']['name'])) {
-
-                // Se ha subido nueva imagen
-                // Nombre del archivo subido
-                $nombreArchivo = basename($_FILES["ruta_imagen"]["name"]);
-                $rutaTemporal = $_FILES['ruta_imagen']['tmp_name'];
-                // Luego tú usas esa variable para construir la ruta final:
-                $rutaCompleta = $directorio . $nombreArchivo;
-                move_uploaded_file($rutaTemporal, $rutaCompleta);
-            } else {
-
-                // No se ha subido imagen → mantener la anterior
-                $rutaCompleta = $_POST['imagen_actual'];
-            }
+            $rutaCompleta = subirImagen($_FILES['ruta_imagen'], $_POST['imagen_actual']);
 
             $u->updateByAdmin($_GET['id'], $_POST['username'], $_POST['email'], $_POST['dinero'], $rutaCompleta);
             header("Location: index.php?carpeta=admin&accion=index&controller=Usuario");

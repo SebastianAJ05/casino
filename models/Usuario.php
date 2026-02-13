@@ -47,7 +47,7 @@ class Usuario
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-     public function getById($id)
+    public function getById($id)
     {
         $stmt = $this->db->prepare("SELECT id, username, email, dinero, ruta_imagen FROM usuarios WHERE id = ? AND isAdmin = 0");
         $stmt->execute([$id]);
@@ -58,5 +58,19 @@ class Usuario
     {
         $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,dinero = ?,ruta_imagen = ? WHERE id = ? AND isAdmin = 0");
         $stmt->execute([$username, $email, $dinero, $ruta_imagen, $id]);
+    }
+
+    public function comprobarAdmin($id_usuario)
+    {
+        $stmt = $this->db->prepare("SELECT isAdmin FROM usuarios WHERE id = ?");
+        $stmt->execute([$id_usuario]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado && isset($resultado['isAdmin']) && filter_var($resultado['isAdmin'], FILTER_VALIDATE_BOOLEAN) === true;
+    }
+
+    public function generarMoneda($id_usuario)
+    {
+        $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero + 1 WHERE id = ?');
+        $stmt->execute([$id_usuario]);
     }
 }
