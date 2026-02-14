@@ -41,11 +41,11 @@
 
 
                         <td class="acciones">
-                            <a href="index.php?controller=Caballo&carpeta=admin&accion=editar&id=<?php echo urlencode($caballo['id']); ?>" class="btn-edit">
+                            <a href="frontController.php?controller=Caballo&carpeta=admin&accion=editar&id=<?php echo urlencode($caballo['id']); ?>" class="btn-edit">
                                 Editar
                             </a>
 
-                            <a href="index.php?controller=Caballo&carpeta=admin&accion=eliminar&id=<?php echo urlencode($caballo['id']); ?>" class="btn-delete">
+                            <a href="frontController.php?controller=Caballo&carpeta=admin&accion=eliminar&id=<?php echo urlencode($caballo['id']); ?>" class="btn-delete">
                                 Borrar
                             </a>
                         </td>
@@ -54,7 +54,7 @@
             </tbody>
         </table>
     </div>
-    <a href="index.php?controller=Caballo&accion=crear&carpeta=admin" class="btn-crear-algo">
+    <a href="frontController.php?controller=Caballo&accion=crear&carpeta=admin" class="btn-crear-algo">
         ✦ Crear nuevo caballo
     </a>
 

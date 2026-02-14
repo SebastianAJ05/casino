@@ -11,7 +11,7 @@
 <body>
     <h2 class="admin-section-title">Crear nuevo caballo</h2>
 
-    <a href="./index.php?controller=Caballo&action=index&carpeta=admin" class="btn-volver-admin">
+    <a href="./frontController.php?controller=Caballo&action=index&carpeta=admin" class="btn-volver-admin">
         ← Volver a la lista de caballos
     </a>
 
@@ -44,7 +44,7 @@
                 required>
 
             <div class="edit-actions">
-                <a href="./index.php?controller=Caballo&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
+                <a href="./frontController.php?controller=Caballo&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
                 <button type="submit" class="btn-save">Guardar caballo</button>
             </div>
 

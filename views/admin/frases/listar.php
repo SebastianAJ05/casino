@@ -32,11 +32,11 @@
 
 
                         <td class="acciones">
-                            <a href="index.php?controller=Frase&carpeta=admin&accion=editar&id=<?php echo urlencode($frase['id']); ?>" class="btn-edit">
+                            <a href="frontController.php?controller=Frase&carpeta=admin&accion=editar&id=<?php echo urlencode($frase['id']); ?>" class="btn-edit">
                                 Editar
                             </a>
 
-                            <a href="index.php?controller=Frase&carpeta=admin&accion=eliminar&id=<?php echo urlencode($frase['id']); ?>" class="btn-delete">
+                            <a href="frontController.php?controller=Frase&carpeta=admin&accion=eliminar&id=<?php echo urlencode($frase['id']); ?>" class="btn-delete">
                                 Borrar
                             </a>
                         </td>
@@ -45,7 +45,7 @@
             </tbody>
         </table>
     </div>
-    <a href="index.php?controller=Frase&accion=crear&carpeta=admin" class="btn-crear-algo">
+    <a href="frontController.php?controller=Frase&accion=crear&carpeta=admin" class="btn-crear-algo">
         ✦ Crear nueva frase
     </a>
 

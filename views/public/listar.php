@@ -22,18 +22,18 @@ Esta “ruta” NO es una ruta:
 
 Qué pasa realmente ??
     El navegador abre:
-        index.php?c=Usuario&a=crear
+        frontController.php?c=Usuario&a=crear
 
     PHP NO entiende MVC por sí solo.
     Solo lee:
         $_GET['c']  // "Usuario"
         $_GET['a']  // "crear"
 
-    index.php decide todo -> IMPORTANTE !!!!!!
+    frontController.php decide todo -> IMPORTANTE !!!!!!
 
     Quién “sabe” a dónde ir ??
         -> No la vista
         -> No PHP
-        -> El Front Controller (index.php)  
+        -> El Front Controller (frontController.php)  
 
 -->

@@ -31,9 +31,9 @@
 
     <p class="auth-extra">
       ¿No tienes cuenta?
-      <a href="index.php?accion=crear&controller=Usuario&carpeta=public">Regístrate</a>
+      <a href="frontController.php?accion=crear&controller=Usuario&carpeta=public">Regístrate</a>
     </p>
-    <a href="index.php?accion=login&controller=Usuario&carpeta=admin" class="admin-link"> Acceso administrador </a>
+    <a href="frontController.php?accion=login&controller=Usuario&carpeta=admin" class="admin-link"> Acceso administrador </a>
   </main>
 </body>
 

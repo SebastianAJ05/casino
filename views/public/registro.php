@@ -44,7 +44,7 @@
 
       <p class="auth-extra">
         ¿Ya tienes cuenta?
-        <a href="index.php?accion=login&controller=Usuario&carpeta=public">Inicia sesión</a>
+        <a href="frontController.php?accion=login&controller=Usuario&carpeta=public">Inicia sesión</a>
       </p>
     </main>
   </body>

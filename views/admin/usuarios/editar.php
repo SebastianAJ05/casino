@@ -73,7 +73,7 @@
 
 
             <div class="edit-actions">
-                <a href="./index.php?controller=Usuario&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
+                <a href="./frontController.php?controller=Usuario&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
                 <button type="submit" class="btn-save">Guardar cambios</button>
             </div>
 

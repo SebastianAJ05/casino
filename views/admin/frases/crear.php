@@ -11,7 +11,7 @@
 <body>
     <h2 class="admin-section-title">Crear nueva frase</h2>
 
-    <a href="./index.php?controller=Frase&action=index&carpeta=admin" class="btn-volver-admin">
+    <a href="./frontController.php?controller=Frase&action=index&carpeta=admin" class="btn-volver-admin">
         ← Volver a la lista de frases
     </a>
 
@@ -35,7 +35,7 @@
                 name="autor">
 
             <div class="edit-actions">
-                <a href="./index.php?controller=Frase&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
+                <a href="./frontController.php?controller=Frase&action=index&carpeta=admin" class="btn-cancel">Cancelar</a>
                 <button type="submit" class="btn-save">Guardar frase</button>
             </div>
 

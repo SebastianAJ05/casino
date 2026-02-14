@@ -44,11 +44,11 @@
                         </td>
 
                         <td class="acciones">
-                            <a href="index.php?controller=Usuario&carpeta=admin&accion=editar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-edit">
+                            <a href="frontController.php?controller=Usuario&carpeta=admin&accion=editar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-edit">
                                 Editar
                             </a>
 
-                            <a href="index.php?controller=Usuario&carpeta=admin&accion=eliminar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-delete">
+                            <a href="frontController.php?controller=Usuario&carpeta=admin&accion=eliminar&id=<?php echo urlencode($usuario['id']); ?>" class="btn-delete">
                                 Borrar
                             </a>
                         </td>

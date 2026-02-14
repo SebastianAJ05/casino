@@ -7,6 +7,10 @@ class UsuarioController
 {
     public function login()
     {
+        if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
+            header("Location: index.php?carpeta=admin&accion=login&controller=Usuario");
+            exit();
+        }
         if ($_POST) {
             $u = new Usuario();
             $admin_buscar = $u->getAdmin($_POST["email"]);
@@ -29,12 +33,19 @@ class UsuarioController
 
     public function index()
     {
+        if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
+            header("Location: index.php?carpeta=admin&accion=login&controller=Usuario");
+            exit();
+        }
         $usuarios = (new Usuario())->getAll();
         require './views/admin/usuarios/listar.php';
     }
     public function editar()
     {
-
+        if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
+            header("Location: index.php?carpeta=admin&accion=login&controller=Usuario");
+            exit();
+        }
         $u = new Usuario();
         if ($_POST) {
 
@@ -48,6 +59,10 @@ class UsuarioController
     }
     public function eliminar()
     {
+        if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
+            header("Location: index.php?carpeta=admin&accion=login&controller=Usuario");
+            exit();
+        }
         (new Usuario())->delete($_GET['id']);
         header("Location: index.php?carpeta=admin&accion=index");
     }
