@@ -18,7 +18,7 @@
             <!-- Avatar actual -->
             <div class="edit-avatar">
                 <img
-                    src="<?php echo htmlspecialchars($usuario['ruta_imagen']); ?>"
+                    src="<?php echo htmlspecialchars($usuario['ruta_imagen'] ?? './img/sin_foto.webp'); ?>"
                     alt="Avatar actual"
                     id="preview-avatar">
             </div>

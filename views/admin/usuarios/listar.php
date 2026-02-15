@@ -31,7 +31,7 @@
                     <tr>
                         <td>
                             <img
-                                src="<?php echo htmlspecialchars($usuario['ruta_imagen']); ?>"
+                                src="<?php echo htmlspecialchars($usuario['ruta_imagen'] ?? './img/sin_foto.webp'); ?>"
                                 alt="Avatar"
                                 class="admin-avatar">
                         </td>

@@ -12,14 +12,6 @@ function comprobarLogin(): bool
     return isset($_SESSION['id_usuario']) && $_SESSION['id_usuario'] != null;
 }
 
-function cerrarSesion($ruta): void
-{
-    session_start();
-    session_destroy();
-    header("location: $ruta");
-    exit;
-}
-
 function subirImagen($archivoSubido, $archivoAntiguo): string
 {
     $directorio = "./img/";
@@ -38,7 +30,6 @@ function subirImagen($archivoSubido, $archivoAntiguo): string
         $rutaCompleta = $directorio . $nombreArchivo;
         move_uploaded_file($rutaTemporal, $rutaCompleta);
     } else {
-
         // No se ha subido imagen → mantener la anterior
         $rutaCompleta = $archivoAntiguo;
     }

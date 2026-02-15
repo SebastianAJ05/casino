@@ -354,3 +354,5 @@ footer .warning {
   margin-top: 5px;
   padding-top: 12px;
 }
+
+@import url('./responsive.css');

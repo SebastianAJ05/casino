@@ -73,4 +73,10 @@ class Usuario
         $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero + 1 WHERE id = ?');
         $stmt->execute([$id_usuario]);
     }
+
+    public function updateByUser($id, $username, $email, $ruta_imagen)
+    {
+        $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,ruta_imagen = ? WHERE id = ? AND isAdmin = 0");
+        $stmt->execute([$username, $email, $ruta_imagen, $id]);
+    }
 }

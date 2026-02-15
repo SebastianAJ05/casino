@@ -40,12 +40,12 @@
       <!-- DROPDOWN USUARIO -->
       <div class="user-dropdown" id="userToggle">
         <button class="user-button">
-          <img src="<?= htmlspecialchars($_SESSION['foto_perfil'] ?? '') ?>" alt="Tu foto de perfil" class="user-avatar"> ▼
+          <img src="<?= htmlspecialchars($_SESSION['foto_perfil'] ?? './img/sin_foto.webp') ?>" alt="Tu foto de perfil" class="user-avatar"> ▼
         </button>
 
         <div class="dropdown-menu" id="userMenu">
-          <a href="perfil.php">Mi perfil</a>
-          <a href="mis-frases.php">Mis frases</a>
+          <a href="./frontController.php?carpeta=public&accion=editar&controller=Usuario&id=<?= $_SESSION['id_usuario'] ?>">Mi perfil</a>
+          <a href="./frontController.php?carpeta=public&accion=index&controller=Frase">Mis frases</a>
           <a href="./config/cerrar_sesion.php">Cerrar sesión</a>
         </div>
       </div>
@@ -54,10 +54,10 @@
 
 
       <a
-        href="frontController.php?accion=login&controller=Usuario&carpeta=public"
+        href="./frontController.php?accion=login&controller=Usuario&carpeta=public"
         class="login">Iniciar sesión</a>
       <a
-        href="frontController.php?accion=crear&controller=Usuario&carpeta=public"
+        href="./frontController.php?accion=crear&controller=Usuario&carpeta=public"
         class="register">Registro</a>
 
 

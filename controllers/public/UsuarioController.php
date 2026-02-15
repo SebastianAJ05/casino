@@ -1,6 +1,7 @@
 <?php
 
 require_once './models/Usuario.php';
+require_once './config/funciones.php';
 
 class UsuarioController
 {
@@ -34,17 +35,8 @@ class UsuarioController
                     Guarda en BD y Redirige al listado
         */
         if ($_POST) {
-            $directorio = "./img/";
 
-            // Si no existe la carpeta, la creamos
-            if (!file_exists($directorio)) {
-                mkdir($directorio, 0777, true);
-            }
-
-            // // Nombre del archivo subido
-            $nombreArchivo = basename($_FILES["imagen"]["name"]);
-            // // Luego tú usas esa variable para construir la ruta final:
-            $rutaCompleta = $directorio . $nombreArchivo;
+            $rutaCompleta = subirImagen($_FILES['ruta_imagen'], $_POST['imagen_actual']);
             $contrasenia_cifrada = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
 
             move_uploaded_file($_FILES["imagen"]["tmp_name"],  $rutaCompleta);
@@ -56,29 +48,21 @@ class UsuarioController
     public function editar()
     {
 
+        // if (!comprobarLogin()) {
+        //     header("Location: frontController.php?carpeta=public&accion=login&controller=Usuario");
+        //     exit();
+        // }
         $u = new Usuario();
         if ($_POST) {
 
-            $directorio = "./img/";
+            $rutaCompleta = subirImagen($_FILES['ruta_imagen'], $_POST['imagen_actual']);
 
-            // Si no existe la carpeta, la creamos
-            if (!file_exists($directorio)) {
-                mkdir($directorio, 0777, true);
-            }
-
-            // // Nombre del archivo subido
-            $nombreArchivo = basename($_FILES["imagen"]["name"]);
-            // Luego tú usas esa variable para construir la ruta final:
-            $rutaCompleta = $directorio . $nombreArchivo;
-
-            move_uploaded_file($_FILES["imagen"]["tmp_name"],  $rutaCompleta);
-            // En DOS pasos como método anterior de crear()
-
-            $u->update($_GET['id'], $_POST['username'], $_POST['email'], $rutaCompleta);
-            header("Location: index.php");
+            $u->updateByUser($_GET['id'], $_POST['username'], $_POST['email'], $rutaCompleta);
+            $_SESSION['foto_perfil'] = $rutaCompleta;
+            header("Location: index.php?carpeta=public&accion=index&controller=Usuario");
         }
-        $data = $u->getById($_GET['id']);
-        require 'views/editar.php';
+        $usuario = $u->getById($_GET['id']);
+        require './views/public/perfil.php';
     }
     public function eliminar()
     {
