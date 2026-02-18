@@ -28,7 +28,7 @@
     </div>
 
     <nav class="header-nav">
-      <a href="./index.html">Inicio</a>
+      <a href="./index.php">Inicio</a>
       <a href="./views/faqs.html">FAQs</a>
       <a href="./frontController.php?accion=crear&controller=Contacto">Contacto</a>
       <a href="./views/sobre_nosotros.html">Sobre nosotros</a>
@@ -88,7 +88,7 @@
       <article class="game-card">
         <h3>Generar monedas</h3>
         <p>Consigue una moneda solo por esperar unos segundos</p>
-        <a href="generar_monedas.html">Entrar</a>
+        <a href="./views/public/generar_monedas.php">Entrar</a>
       </article>
 
       <article class="game-card">

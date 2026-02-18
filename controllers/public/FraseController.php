@@ -8,11 +8,13 @@ class FraseController
 
     public function index()
     {
-        if (!comprobarLogin()) {
-            header("Location: frontController.php?carpeta=public&accion=login&controller=Usuario");
-            exit();
-        }
-        $frases = (new Frase())->getAll();
+        session_start();
+
+        //     if (!comprobarLogin()) {
+        //         header("Location: frontController.php?carpeta=public&accion=login&controller=Usuario");
+        //         exit();
+        //     }
+        $misFrases = (new Frase())->getByUser($_SESSION['id_usuario']);
         require './views/public/frases.php';
     }
     public function eliminar()

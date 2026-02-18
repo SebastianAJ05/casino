@@ -17,9 +17,25 @@ window.onload = function () {
       barra.setAttribute("value", valor);
       if (valor == barra.getAttribute("max")) {
         clearInterval(timer);
+        //Toda esta es la parte de la petición para generar la moneda en el backend
+        fetch(
+          "/casino/controllers/public/UsuarioController.php?accion=generarMoneda",
+          {
+            method: "POST",
+          },
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              document.getElementById("dinero_usuario").textContent =
+                data.nuevoDinero + " 💰";
+            }
+          });
+
+        //Hasta aquí la parte de la petición para generar la moneda en el backend
         localStorage.setItem(
           "monedas_generadas",
-          (parseInt(localStorage.getItem("monedas_generadas")) || 0) + 1
+          (parseInt(localStorage.getItem("monedas_generadas")) || 0) + 1,
         );
         monedas_generadas.textContent =
           parseInt(localStorage.getItem("monedas_generadas")) || 0;

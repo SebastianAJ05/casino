@@ -7,9 +7,11 @@
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="./css/perfil.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/comun.css">
 </head>
 
 <body>
+    <a href="./index.php" class="casino-back">⬅ Volver al Casino</a>
     <h2 class="perfil-title">Editar perfil</h2>
 
     <div class="perfil-container">

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <a href="./index.html" class="casino-back">⬅ Volver al Casino</a>
+  <a href="./index.php" class="casino-back">⬅ Volver al Casino</a>
 
   <main class="auth-container">
     <?php

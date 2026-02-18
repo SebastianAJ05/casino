@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/comun.css" />
   </head>
   <body>
-    <a href="./index.html" class="casino-back">⬅ Volver al Casino</a>
+    <a href="./index.php" class="casino-back">⬅ Volver al Casino</a>
 
     <main class="auth-container">
       <h1>Registro</h1>

@@ -35,4 +35,22 @@ class Frase
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
+
+    public function getRandom()
+    {
+        return $this->db->query("SELECT * FROM frases ORDER BY RAND() LIMIT 1")->fetch();
+    }
+
+    public function getByUser($id)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM frases_usuario INNER JOIN frases ON frases_usuario.id_frase = frases.id WHERE id_usuario = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetchAll();
+    }
+
+    public function deleteByUser($id_usuario, $id_frase)
+    {
+        $stmt = $this->db->prepare("DELETE FROM frases_usuario WHERE id_usuario = ? AND id_frase = ?");
+        $stmt->execute([$id_usuario, $id_frase]);
+    }
 }

@@ -14,6 +14,7 @@ class UsuarioController
                 if (password_verify($_POST['contrasenia'], $usuario_buscar['contrasenia'])) {
                     session_start();
                     $_SESSION['id_usuario'] = $usuario_buscar['id'];
+                    $_SESSION['foto_perfil'] = $usuario_buscar['ruta_imagen'];
                     $salida = "Login exitoso";
                     header("Location: index.php");
                 } else {
@@ -58,6 +59,7 @@ class UsuarioController
             $rutaCompleta = subirImagen($_FILES['ruta_imagen'], $_POST['imagen_actual']);
 
             $u->updateByUser($_GET['id'], $_POST['username'], $_POST['email'], $rutaCompleta);
+            session_start();
             $_SESSION['foto_perfil'] = $rutaCompleta;
             header("Location: index.php?carpeta=public&accion=index&controller=Usuario");
         }
@@ -68,5 +70,31 @@ class UsuarioController
     {
         (new Usuario())->delete($_GET['id']);
         header("Location: index.php");
+    }
+
+    public function generarMoneda()
+    {
+        $u = new Usuario();
+        session_start();
+        $monedas = $u->getById($_SESSION['id_usuario'])["dinero"];
+        $data = json_decode(file_get_contents("php://input"), true);
+
+
+        header('Content-Type: application/json');
+
+
+        $u->generarMoneda($_SESSION['id_usuario']);
+        if ($u) {
+            // echo json_encode([
+            //     "success" => true
+            // ]);
+        } else {
+            // echo json_encode([
+            //     "success" => false,
+            //     "message" => "No autorizado"
+            // ]);
+        }
+        // header("Location: index.php");
+        require_once "./views/public/generar_monedas.php";
     }
 }

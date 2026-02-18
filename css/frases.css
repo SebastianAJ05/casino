@@ -1,0 +1,56 @@
+.mis-frases-container {
+  max-width: 900px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mis-frases-title {
+  text-align: center;
+  margin-top: 30px;
+  color: #f5d76e;
+  letter-spacing: 1px;
+}
+
+.sin-frases {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}
+
+.sin-frases span {
+  display: block;
+  margin-top: 8px;
+  color: #00ff99;
+}
+
+.frase-card {
+  padding: 25px;
+
+  background: linear-gradient(145deg, #101010, #181818);
+  border: 1px solid #222;
+
+  border-radius: 16px;
+
+  transition: 0.3s ease;
+}
+
+.frase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 255, 150, 0.15);
+}
+
+.frase-texto {
+  font-size: 1.1rem;
+  color: #eee;
+  line-height: 1.5;
+}
+
+.frase-autor {
+  margin-top: 15px;
+  text-align: right;
+  font-size: 0.9rem;
+  color: #f5d76e;
+  font-style: italic;
+}
