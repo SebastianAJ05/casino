@@ -48,7 +48,7 @@ class UsuarioController
     }
     public function editar()
     {
-
+        session_start();
         // if (!comprobarLogin()) {
         //     header("Location: frontController.php?carpeta=public&accion=login&controller=Usuario");
         //     exit();
@@ -66,35 +66,70 @@ class UsuarioController
         $usuario = $u->getById($_GET['id']);
         require './views/public/perfil.php';
     }
-    public function eliminar()
-    {
-        (new Usuario())->delete($_GET['id']);
-        header("Location: index.php");
-    }
 
     public function generarMoneda()
     {
         $u = new Usuario();
         session_start();
-        $monedas = $u->getById($_SESSION['id_usuario'])["dinero"];
+        $usuario = $u->getById($_SESSION['id_usuario']);
         $data = json_decode(file_get_contents("php://input"), true);
+        if ($data) {
+            header('Content-Type: application/json');
 
+            if ($data['exito']) {
+                $u->generarMonedas($_SESSION['id_usuario'], 1);
+            }
 
-        header('Content-Type: application/json');
-
-
-        $u->generarMoneda($_SESSION['id_usuario']);
-        if ($u) {
-            // echo json_encode([
-            //     "success" => true
-            // ]);
-        } else {
-            // echo json_encode([
-            //     "success" => false,
-            //     "message" => "No autorizado"
-            // ]);
+            if ($u) {
+                echo json_encode([
+                    "success" => true,
+                    "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
+                ]);
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No autorizado"
+                ]);
+            }
         }
-        // header("Location: index.php");
+
         require_once "./views/public/generar_monedas.php";
+    }
+
+    public function getUser($id)
+    {
+        $u = new Usuario();
+        return $u->getById($id);
+    }
+
+    public function adivinarPersonaje()
+    {
+        $u = new Usuario();
+        session_start();
+        $usuario = $u->getById($_SESSION['id_usuario']);
+
+        $data = json_decode(file_get_contents("php://input"), true);
+        if ($data) {
+            header('Content-Type: application/json');
+
+            if ($data['exito']) {
+                $u->generarMonedas($_SESSION['id_usuario'], 5);
+            } else {
+                $u->restarMonedas($_SESSION['id_usuario'], 5);
+            }
+
+            if ($u) {
+                echo json_encode([
+                    "success" => true,
+                    "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
+                ]);
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No autorizado"
+                ]);
+            }
+        }
+        require_once './views/public/dragonBall.php';
     }
 }

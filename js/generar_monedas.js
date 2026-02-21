@@ -19,17 +19,22 @@ window.onload = function () {
         clearInterval(timer);
         //Toda esta es la parte de la petición para generar la moneda en el backend
         fetch(
-          "/casino/controllers/public/UsuarioController.php?accion=generarMoneda",
+          "http://localhost/casino/frontController.php?carpeta=public&accion=generarMoneda&controller=Usuario",
           {
             method: "POST",
+            body: JSON.stringify({ exito: true }),
           },
         )
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             if (data.success) {
               document.getElementById("dinero_usuario").textContent =
-                data.nuevoDinero + " 💰";
+                data.nuevoDinero;
             }
+          })
+          .catch((err) => {
+            console.error("Error al generar moneda:", err);
           });
 
         //Hasta aquí la parte de la petición para generar la moneda en el backend

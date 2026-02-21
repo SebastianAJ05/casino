@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Coin Generator</title>
-    <link rel="stylesheet" href="../../css/generar_monedas.css" />
+    <link rel="stylesheet" href="./css/generar_monedas.css" />
   </head>
   <body>
     <main class="coin-machine">
@@ -12,7 +12,7 @@
 
       <div class="coin-display">
         <span class="coin-icon">🪙</span>
-        <span id="dinero_usuario" class="coin-count">0</span>
+        <span id="dinero_usuario" class="coin-count"><?php echo $usuario['dinero']; ?></span>
       </div>
 
       <div class="progress-container">
@@ -33,9 +33,9 @@
       alt="Generar moneda"
     />
     -->
-      <a href="../../index.php" class="casino-back"> ⬅ Volver al Casino </a>
+      <a href="./index.php" class="casino-back"> ⬅ Volver al Casino </a>
     </main>
 
-    <script src="../../js/generar_monedas.js"></script>
+    <script src="./js/generar_monedas.js"></script>
   </body>
 </html>

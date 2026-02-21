@@ -68,15 +68,21 @@ class Usuario
         return $resultado && isset($resultado['isAdmin']) && filter_var($resultado['isAdmin'], FILTER_VALIDATE_BOOLEAN) === true;
     }
 
-    public function generarMoneda($id_usuario)
+    public function generarMonedas($id_usuario, $cantidad = 1)
     {
-        $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero + 1 WHERE id = ?');
-        $stmt->execute([$id_usuario]);
+        $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero + ? WHERE id = ?');
+        $stmt->execute([$cantidad, $id_usuario]);
     }
 
     public function updateByUser($id, $username, $email, $ruta_imagen)
     {
         $stmt = $this->db->prepare("UPDATE usuarios SET username = ?,email = ?,ruta_imagen = ? WHERE id = ? AND isAdmin = 0");
         $stmt->execute([$username, $email, $ruta_imagen, $id]);
+    }
+
+    public function restarMonedas($id_usuario, $cantidad)
+    {
+        $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero - ? WHERE id = ?');
+        $stmt->execute([$cantidad, $id_usuario]);
     }
 }

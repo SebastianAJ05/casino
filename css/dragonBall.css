@@ -1,0 +1,452 @@
+@import url("./comun.css");
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* FONDO GENERAL */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #1a1a1a 0%, #000 60%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 153, 0, 0.05),
+      rgba(255, 153, 0, 0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  color: #f5f5f5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TÍTULO */
+h1 {
+  margin: 40px 0 20px;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 10px rgba(255, 140, 0, 0.6),
+    0 0 25px rgba(255, 100, 0, 0.4);
+}
+
+/* IMAGEN DEL PERSONAJE */
+img {
+  max-width: 320px;
+  max-height: 600px;
+  height: auto;
+  margin: 30px 0;
+
+  filter: drop-shadow(0 0 25px rgba(0, 255, 200, 0.4));
+  animation: aura 3s infinite ease-in-out;
+}
+
+/* EFECTO AURA (KI) */
+@keyframes aura {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 200, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(0, 255, 200, 0.8));
+    transform: scale(1.03);
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 200, 0.4));
+    transform: scale(1);
+  }
+}
+
+/* CONTENEDOR DE BOTONES */
+div {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+/* BOTONES DE RESPUESTA */
+button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+
+  transition: all 0.15s ease;
+}
+
+/* HOVER */
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 0 15px rgba(255, 145, 0, 0.8),
+    0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* CLICK */
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+
+  img {
+    max-width: 260px;
+  }
+
+  div {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  button {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+button.correct {
+  background: linear-gradient(145deg, #00ff99, #00cc66);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.9);
+  animation: correctFlash 0.4s ease;
+}
+
+button.wrong {
+  background: linear-gradient(145deg, #ff4444, #cc0000);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  animation: wrongShake 0.4s ease;
+}
+
+@keyframes correctFlash {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wrongShake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* CANTIDAD DE DINERO */
+#dinero_usuario {
+  padding: 6px 14px;
+  margin-left: 8px;
+
+  background: linear-gradient(145deg, #111, #1e1e1e);
+  border: 2px solid #f5c542;
+  border-radius: 10px;
+
+  color: #f5c542;
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(245, 197, 66, 0.5);
+}
+
+/* BOTÓN VOLVER – GLOBAL CASINO */
+.casino-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  background: linear-gradient(145deg, #f5c542, #ff9100);
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+.casino-back:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 0 15px rgba(255, 145, 0, 0.9),
+    0 6px 15px rgba(0, 0, 0, 0.9);
+}
+
+/* CLICK */
+.casino-back:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .casino-back {
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+/* HUD CONTENEDOR */
+#hud-dinero {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 16px;
+
+  background: linear-gradient(145deg, #0a2a3a, #041821);
+  border: 2px solid #00fff0;
+  border-radius: 14px;
+
+  box-shadow:
+    0 0 15px rgba(0, 255, 240, 0.6),
+    inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+/* TEXTO "ZENIS" */
+.hud-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #00fff0;
+  text-shadow: 0 0 6px rgba(0, 255, 240, 0.8);
+}
+
+/* CANTIDAD */
+#dinero_usuario {
+  min-width: 50px;
+  text-align: right;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+
+  padding: 4px 10px;
+
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+#dinero_usuario.up {
+  animation: moneyUp 0.4s ease;
+  color: #00ff99;
+}
+
+#dinero_usuario.down {
+  animation: moneyDown 0.4s ease;
+  color: #ff4444;
+}
+
+@keyframes moneyUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes moneyDown {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-otra-vez {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  background: linear-gradient(145deg, #ffcc00, #ff9900);
+  color: #111;
+
+  border: none;
+  border-radius: 30px;
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.25s ease;
+}
+
+.btn-otra-vez::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 0, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.btn-otra-vez:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 0 15px rgba(255, 204, 0, 0.7),
+    0 0 30px rgba(255, 153, 0, 0.6);
+}
+
+.btn-otra-vez:hover::before {
+  opacity: 1;
+}
+
+.btn-otra-vez:active {
+  transform: scale(0.95);
+}
+@keyframes auraPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 153, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+  }
+}
+
+.btn-otra-vez {
+  animation: auraPulse 2s infinite;
+}
+
+.oculto {
+  display: none;
+}
+
+.mensaje-db {
+  margin-top: 30px;
+  padding: 14px 22px;
+
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cuando aparece */
+.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Éxito */
+.exito {
+  background: linear-gradient(145deg, #00ff88, #00cc66);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+/* Error */
+.error {
+  background: linear-gradient(145deg, #ff4d4d, #cc0000);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+button:disabled {
+  background: linear-gradient(145deg, #444, #222);
+  color: #888;
+  border: 2px solid #333;
+  cursor: not-allowed;
+
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+
+  filter: grayscale(80%);
+  transition: none;
+}
+
+/* Quitar efectos hover cuando estén disabled */
+button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}

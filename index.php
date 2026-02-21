@@ -88,7 +88,7 @@
       <article class="game-card">
         <h3>Generar monedas</h3>
         <p>Consigue una moneda solo por esperar unos segundos</p>
-        <a href="./views/public/generar_monedas.php">Entrar</a>
+        <a href="./frontController.php?carpeta=public&accion=generarMoneda&controller=Usuario">Entrar</a>
       </article>
 
       <article class="game-card">
@@ -103,7 +103,7 @@
           Adivina el personaje de la API de Dragon Ball. Si aciertas, ganas
           monedas. Si no, las pierdes
         </p>
-        <a href="DragonBall/index.html">Entrar</a>
+        <a href="./frontController.php?carpeta=public&accion=adivinarPersonaje&controller=Usuario">Entrar</a>
       </article>
       <article class="game-card phrases-card">
         <h3>Frases del Casino</h3>
