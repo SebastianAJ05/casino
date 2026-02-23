@@ -14,7 +14,7 @@
   <div id="botones"></div>
   <div id="hud-dinero">
     <span class="hud-label">Zenis</span>
-    <span id="dinero_usuario"><?php echo $usuario['dinero']; ?></span>
+    <span id="dinero_usuario"><?php echo $usuario['dinero'] ?? 0; ?></span>
   </div>
 
   <div id="mensaje-db" class="mensaje-db oculto">

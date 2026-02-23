@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>401 - No autorizado</title>
+    <link rel="stylesheet" href="../css/denegado.css">
+</head>
+<body>
+
+<div class="unauthorized-container">
+
+    <h1 class="error-code">401</h1>
+    <h2 class="error-title">Necesitas iniciar sesión</h2>
+
+    <p class="error-message">
+        Este contenido está reservado para usuarios registrados.
+        Identifícate para continuar.
+    </p>
+
+    <div class="btn-group">
+        <a href="../frontController.php?accion=login&controller=Usuario&carpeta=public" class="btn-primary">Iniciar sesión</a>
+        <a href="../frontController.php?accion=crear&controller=Usuario&carpeta=public" class="btn-secondary">Crear cuenta</a>
+    </div>
+
+</div>
+
+</body>
+</html>

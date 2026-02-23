@@ -71,27 +71,30 @@ class UsuarioController
     {
         $u = new Usuario();
         session_start();
-        $usuario = $u->getById($_SESSION['id_usuario']);
-        $data = json_decode(file_get_contents("php://input"), true);
-        if ($data) {
-            header('Content-Type: application/json');
+        if (isset($_SESSION["id_usuario"])) {
+            $usuario = $u->getById($_SESSION['id_usuario']);
+            $data = json_decode(file_get_contents("php://input"), true);
+            if ($data) {
+                header('Content-Type: application/json');
 
-            if ($data['exito']) {
-                $u->generarMonedas($_SESSION['id_usuario'], 1);
-            }
+                if ($data['exito']) {
+                    $u->generarMonedas($_SESSION['id_usuario'], 1);
+                }
 
-            if ($u) {
-                echo json_encode([
-                    "success" => true,
-                    "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
-                ]);
-            } else {
-                echo json_encode([
-                    "success" => false,
-                    "message" => "No autorizado"
-                ]);
+                if ($u) {
+                    echo json_encode([
+                        "success" => true,
+                        "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
+                    ]);
+                } else {
+                    echo json_encode([
+                        "success" => false,
+                        "message" => "No autorizado"
+                    ]);
+                }
             }
         }
+
 
         require_once "./views/public/generar_monedas.php";
     }
@@ -106,30 +109,33 @@ class UsuarioController
     {
         $u = new Usuario();
         session_start();
-        $usuario = $u->getById($_SESSION['id_usuario']);
+        if (isset($_SESSION["id_usuario"])) {
+            $usuario = $u->getById($_SESSION['id_usuario']);
 
-        $data = json_decode(file_get_contents("php://input"), true);
-        if ($data) {
-            header('Content-Type: application/json');
+            $data = json_decode(file_get_contents("php://input"), true);
+            if ($data) {
+                header('Content-Type: application/json');
 
-            if ($data['exito']) {
-                $u->generarMonedas($_SESSION['id_usuario'], 5);
-            } else {
-                $u->restarMonedas($_SESSION['id_usuario'], 5);
-            }
+                if ($data['exito']) {
+                    $u->generarMonedas($_SESSION['id_usuario'], 3);
+                } else {
+                    $u->restarMonedas($_SESSION['id_usuario'], 2);
+                }
 
-            if ($u) {
-                echo json_encode([
-                    "success" => true,
-                    "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
-                ]);
-            } else {
-                echo json_encode([
-                    "success" => false,
-                    "message" => "No autorizado"
-                ]);
+                if ($u) {
+                    echo json_encode([
+                        "success" => true,
+                        "nuevoDinero" => $u->getById($_SESSION['id_usuario'])
+                    ]);
+                } else {
+                    echo json_encode([
+                        "success" => false,
+                        "message" => "No autorizado"
+                    ]);
+                }
             }
         }
+
         require_once './views/public/dragonBall.php';
     }
 }

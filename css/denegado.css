@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(circle at top, #111 0%, #000 70%);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+/* CONTENEDOR */
+.unauthorized-container {
+    text-align: center;
+    padding: 50px;
+    max-width: 600px;
+}
+
+/* CÓDIGO */
+.error-code {
+    font-size: 120px;
+    margin: 0;
+    background: linear-gradient(145deg, #f5c542, #ff9100);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* TÍTULO */
+.error-title {
+    margin: 10px 0;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+/* MENSAJE */
+.error-message {
+    color: #bbb;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* BOTONES */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-primary {
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+
+    background: linear-gradient(145deg, #f5c542, #ff9100);
+    color: #000;
+
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 145, 0, 0.6);
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-secondary {
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+
+    border: 2px solid #f5c542;
+    color: #f5c542;
+
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #f5c542;
+    color: #000;
+    transform: scale(1.05);
+}

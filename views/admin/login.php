@@ -28,7 +28,7 @@
       <button type="submit">Entrar</button>
     </form>
 
-    <a href="./index.html" class="back-link">← Volver al casino</a>
+    <a href="./index.php" class="back-link">← Volver al casino</a>
   </main>
 
 </body>

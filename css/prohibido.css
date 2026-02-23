@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+/* CONTENEDOR */
+.forbidden-container {
+    text-align: center;
+    padding: 50px;
+    max-width: 600px;
+}
+
+/* CÓDIGO GRANDE */
+.error-code {
+    font-size: 140px;
+    margin: 0;
+    color: #ff1a1a;
+    text-shadow: 
+        0 0 10px rgba(255,0,0,0.7),
+        0 0 30px rgba(255,0,0,0.5);
+}
+
+/* TÍTULO */
+.error-title {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: #ff6666;
+}
+
+/* MENSAJE */
+.error-message {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* DIVISOR */
+.error-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    margin: 30px auto;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    display: inline-block;
+    padding: 12px 25px;
+
+    background: linear-gradient(145deg, #ff1a1a, #990000);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,0,0,0.7);
+}
