@@ -31,7 +31,7 @@ class UsuarioController
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: index.php?carpeta=admin&accion=login&controller=Usuario");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         $usuarios = (new Usuario())->getAll();
@@ -41,7 +41,7 @@ class UsuarioController
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?controller=Usuario&action=login&carpeta=admin");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         $u = new Usuario();
@@ -59,7 +59,7 @@ class UsuarioController
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?controller=Usuario&action=login&carpeta=admin");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         (new Usuario())->delete($_GET['id']);

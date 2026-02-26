@@ -11,7 +11,7 @@ class CaballoController
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?carpeta=admin&accion=login&controller=Usuario");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         $caballos = (new Caballo())->getAll();
@@ -19,9 +19,9 @@ class CaballoController
     }
     public function editar()
     {
-session_start();
+        session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?carpeta=admin&accion=login&controller=Usuario");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         $f = new Caballo();
@@ -39,7 +39,7 @@ session_start();
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?carpeta=admin&accion=login&controller=Usuario");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         (new Caballo())->delete($_GET['id']);
@@ -50,7 +50,7 @@ session_start();
     {
         session_start();
         if (!(new Usuario())->comprobarAdmin($_SESSION['id_usuario'])) {
-            header("Location: ./frontController.php?carpeta=admin&accion=login&controller=Usuario");
+            header("Location: ./views/prohibido.html");
             exit();
         }
         if ($_POST) {

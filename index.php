@@ -111,7 +111,7 @@
           Gasta tus monedas en frases legendarias. Presume, vacila o humilla
           con estilo.
         </p>
-        <a href="frases.html">Entrar</a>
+        <a href="./frontController.php?carpeta=public&accion=canjear&controller=Frase">Entrar</a>
       </article>
     </section>
   </main>

@@ -84,5 +84,6 @@ class Usuario
     {
         $stmt = $this->db->prepare('UPDATE usuarios SET dinero = dinero - ? WHERE id = ?');
         $stmt->execute([$cantidad, $id_usuario]);
+        return $stmt->rowCount(); // 1 si se restaron, 0 si no tenía suficientes
     }
 }

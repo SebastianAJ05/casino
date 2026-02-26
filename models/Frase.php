@@ -53,4 +53,33 @@ class Frase
         $stmt = $this->db->prepare("DELETE FROM frases_usuario WHERE id_usuario = ? AND id_frase = ?");
         $stmt->execute([$id_usuario, $id_frase]);
     }
+
+    public function obtenerFraseDisponible($id_usuario)
+    {
+
+        $sql = "SELECT frases.id, frases.frase, frases.autor
+        FROM frases
+        LEFT JOIN frases_usuario
+            ON frases.id = frases_usuario.id_frase 
+            AND frases_usuario.id_usuario = ?
+        WHERE frases_usuario.id_frase IS NULL
+        ORDER BY RAND()
+        LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id_usuario]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function asignarFrase($id_usuario, $id_frase)
+    {
+
+        $sql = "INSERT INTO frases_usuario (id_usuario, id_frase)
+                VALUES (?, ?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([$id_usuario, $id_frase]);
+    }
 }
