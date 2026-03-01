@@ -82,7 +82,11 @@
         <p>
           Cuatro caballos. Una meta. Apuesta bien o vuelve a casa andando.
         </p>
-        <a href="carrera_caballos.html">Entrar</a>
+        <?php if (isset($_SESSION['id_usuario'])): ?>
+        <a href="./frontController.php?carpeta=public&accion=index&controller=Caballo">Entrar</a>
+        <?php else: ?>
+        <a href="./views/public/carrera_caballos.html">Entrar</a>
+        <?php endif; ?>
       </article>
 
       <article class="game-card">

@@ -36,7 +36,7 @@
             Precio: <span class="precio-cantidad">50</span> monedas
         </div>
 
-        <?php if (!isset($frase)) : ?>
+        <?php if (!isset($canjeada["frase"])) : ?>
 
             <form method="POST">
                 <button type="submit" name="generar" class="btn-generar">
@@ -54,10 +54,10 @@
 
             <div class="carta-frase">
                 <p class="texto-frase">
-                    “<?= htmlspecialchars($frase['frase']) ?>”
+                    “<?= htmlspecialchars($canjeada['frase']) ?>”
                 </p>
                 <span class="autor-frase">
-                    — <?= htmlspecialchars($frase['autor']) ?>
+                    — <?= htmlspecialchars($canjeada['autor']) ?>
                 </span>
             </div>
 

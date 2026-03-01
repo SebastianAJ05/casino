@@ -40,28 +40,19 @@ class FraseController
                 if ($usuario["dinero"] < 50) {
                     $salida = "No tienes suficientes monedas.";
                 } else {
-                    // 1 Descontar monedas
-                    $descontado = (new Usuario())->restarMonedas($_SESSION['id_usuario'], 50);
+                    // 1. Obtener frase que no tenga
+                    $frase = new Frase();
+                    $canjeada = $frase->obtenerFraseDisponible($_SESSION['id_usuario']);
 
-                    if (!$descontado) {
-                        $salida = "No tienes monedas suficientes.";
+                    if (!isset($canjeada["frase"])) {
+                        $salida = "Ya tienes todas las recompensas.";
                         $db->rollBack();
                     } else {
-                        // 2 Obtener frase que no tenga
-                        $frase = new Frase();
-                        $canjeada = $frase->obtenerFraseDisponible($_SESSION['id_usuario']);
-                        var_dump($canjeada);
-
-                        if (!$canjeada) {
-                            $salida = "Ya tienes todas las recompensas.";
-                            $db->rollBack();
-                        }
-
+                        // 2. Descontar monedas
+                        (new Usuario())->restarMonedas($_SESSION['id_usuario'], 50);
                         // 3 Asignarla
                         if ($frase->asignarFrase($_SESSION['id_usuario'], $canjeada['id'])) $db->commit();
                         else $db->rollBack();
-
-                        return $frase;
                     }
                 }
             } catch (PDOException $e) {

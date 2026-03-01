@@ -99,12 +99,6 @@ class UsuarioController
         require_once "./views/public/generar_monedas.php";
     }
 
-    public function getUser($id)
-    {
-        $u = new Usuario();
-        return $u->getById($id);
-    }
-
     public function adivinarPersonaje()
     {
         $u = new Usuario();

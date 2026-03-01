@@ -54,17 +54,17 @@ class Frase
         $stmt->execute([$id_usuario, $id_frase]);
     }
 
-    public function obtenerFraseDisponible($id_usuario)
+    public function obtenerFraseDisponible($id_usuario): array|bool
     {
 
         $sql = "SELECT frases.id, frases.frase, frases.autor
-        FROM frases
-        LEFT JOIN frases_usuario
-            ON frases.id = frases_usuario.id_frase 
-            AND frases_usuario.id_usuario = ?
-        WHERE frases_usuario.id_frase IS NULL
-        ORDER BY RAND()
-        LIMIT 1";
+FROM frases
+LEFT JOIN frases_usuario
+    ON frases.id = frases_usuario.id_frase 
+    AND frases_usuario.id_usuario = ?
+WHERE frases_usuario.id_frase IS NULL
+ORDER BY RAND()
+LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id_usuario]);

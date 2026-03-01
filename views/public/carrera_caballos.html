@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrera de Caballos</title>
+    <link rel="stylesheet" href="../../css/carrera_caballos.css" />
+    <style>
+      div {
+        width: 150px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -20px;
+        position: relative;
+      }
+      img {
+        width: 150px;
+        height: auto;
+        left: 0;
+        margin-bottom: 5px;
+      }
+      section {
+        margin-top: 50px;
+      }
+      h3 {
+        margin-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Elige el caballo por el que quieras apostar</h1>
+    <p>Tu dinero: <span id="dinero_usuario">100</span> €</p>
+    <div id="Zeus">
+      <h3>Zeus</h3>
+      <img src="../../img/zeus.webp" alt="Caballo 1" />
+      <button>Apostar por Zeus</button>
+    </div>
+    <br />
+    <div id="Centella">
+      <h3>Centella</h3>
+      <img src="../../img/centella.webp" alt="Caballo 2" />
+      <button>Apostar por Centella</button>
+    </div>
+    <br />
+    <div id="Rapidash">
+      <h3>Rapidash</h3>
+      <img src="../../img/rapidash.webp" alt="Caballo 3" />
+      <button>Apostar por Rapidash</button>
+    </div>
+    <br />
+    <div id="Pegasus">
+      <h3>Pegasus</h3>
+      <img src="../../img/pegasus.webp" alt="Caballo 4" />
+      <button>Apostar por Pegasus</button>
+    </div>
+
+    <br />
+    <section>
+      <output id="apuesta"></output>
+      <label for="dinero_apostado">¿Cuánto quieres apostar?</label>
+      <input
+        type="number"
+        name="dinero_apostado"
+        id="dinero_apostado"
+        value="0"
+      />
+      <button id="run">CORRER</button>
+      <button id="reset">Resetear</button>
+    </section>
+
+    <a href="../../index.php" class="casino-back"> ⬅ Volver al Casino </a>
+
+    <script src="../../js/carrera_caballos.js"></script>
+  </body>
+</html>

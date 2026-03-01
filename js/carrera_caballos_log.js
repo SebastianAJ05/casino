@@ -1,12 +1,46 @@
 let timer;
 
+function enviarResultado(idCaballoGanador, dineroApostado, haGanado) {
+  fetch(
+    "http://localhost/casino/frontController.php?carpeta=public&accion=terminarCarrera&controller=Caballo",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id_caballo: idCaballoGanador,
+        dinero_apostado: dineroApostado,
+        victoria: haGanado,
+      }),
+    },
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        console.log("Nuevo dinero:", data.nuevoDinero);
+
+        // Actualizar dinero en pantalla
+        const dineroSpan = document.getElementById("dinero_usuario");
+        if (dineroSpan) {
+          dineroSpan.textContent = data.nuevoDinero;
+        }
+      } else {
+        console.error(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error en fetch:", error);
+    });
+}
 //Pon con localStorage las veces que el usuario ha ganado la apuesta y las que ha perdido
 
 window.onload = function () {
-  let divs = document.querySelectorAll("div");
+  let divs = document.querySelectorAll("div[data-id]");
+
   console.log(divs);
 
-  let apuestas = document.querySelectorAll("div button");
+  let apuestas = document.querySelectorAll("div[data-id] button");
   let correr = document.querySelector("#run");
   let posicion;
   let caballo_apuesta;
@@ -34,11 +68,11 @@ window.onload = function () {
     let campo_apuesta = document.getElementById("dinero_apostado");
 
     let dinero_apostado = parseInt(
-      document.getElementById("dinero_apostado").value
+      document.getElementById("dinero_apostado").value,
     );
 
     let dinero_usuario = parseInt(
-      document.getElementById("dinero_usuario").textContent
+      document.getElementById("dinero_usuario").textContent,
     );
     if (!caballo_apuesta || caballo_apuesta == null) {
       alert("No has elegido caballo a apostar");
@@ -49,7 +83,7 @@ window.onload = function () {
         dinero_apostado <= 0
       ) {
         alert(
-          "No puedes apostar más dinero del que tienes o apostar una cantidad inválida"
+          "No puedes apostar más dinero del que tienes o apostar una cantidad inválida",
         );
         console.log("Dinero apostado: " + dinero_apostado);
         return false;
@@ -70,13 +104,13 @@ window.onload = function () {
           for (let div of divs) {
             let avance = parseInt(Math.random() * 50 - 10 + 1) + 10;
             posicion = parseInt(
-              div.style.left.substring(0, div.style.left.indexOf("p"))
+              div.style.left.substring(0, div.style.left.indexOf("p")),
             );
 
             //console.log("Posicion: " + posicion);
             div.style.left = parseInt(posicion + avance) + "px";
             //console.log("Nueva posicion: " + div.style.left);
-            if (posicion >= window.innerWidth - div.clientWidth) {
+            if (posicion >= screen.availWidth - div.clientWidth) {
               clearInterval(timer);
               alert("Carrera terminada");
 
@@ -89,6 +123,14 @@ window.onload = function () {
                 //Suma el dinero cuando tengas lo del dinero hecho
                 document.getElementById("dinero_usuario").textContent =
                   dinero_usuario + dinero_apostado;
+
+                // Fetch para actualizar el dinero del usuario en la base de datos
+
+                enviarResultado(
+                  div.getAttribute("data-id"),
+                  dinero_apostado,
+                  true,
+                );
               } else {
                 output.classList.add("derrota");
                 output.innerText =
@@ -100,6 +142,13 @@ window.onload = function () {
                 // Y aquí restalo
                 document.getElementById("dinero_usuario").textContent =
                   dinero_usuario - dinero_apostado;
+
+                // Fetch para actualizar el dinero del usuario en la base de datos
+                enviarResultado(
+                  div.getAttribute("data-id"),
+                  dinero_apostado,
+                  false,
+                );
               }
               resetear.disabled = false;
             }
